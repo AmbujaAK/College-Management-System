@@ -24,7 +24,7 @@
                 <th>gender</th>
                 <th>mobile</th>
                 <th>Department</th>
-                <th>Action</th>
+                <th colspan=2>Action</th>
             </tr>
             <?php
                 # get department list from database.
@@ -46,7 +46,13 @@
                                         <input type="hidden" name="id" value="'.$row['id'].'">
                                         <input type="submit" value="edit">
                                     </form>
-                                </td>                                
+                                </td>
+                                <td>
+                                    <form method="get" action="remove.php">
+                                        <input type="hidden" name="id" value="'.$row['id'].'">
+                                        <input type="submit" value="delete">
+                                    </form>
+                                </td>
                                 </tr>';
                         }
                     }else{
