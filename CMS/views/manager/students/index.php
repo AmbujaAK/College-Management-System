@@ -12,7 +12,7 @@
 </head>
 <body>
     <center>
-        <h1>Students panel</h1>
+        <h1>Student's panel</h1>
     </center>
     <hr>
     <div>

@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Students list</title>
+    <title>Student's list</title>
 </head>
 <body>
     <div>
@@ -41,6 +41,12 @@
                                 <td>'.$row['gender'].'</td>
                                 <td>'.$row['mobile'].'</td>
                                 <td>'.$row['dept'].'</td>
+                                <td>
+                                    <form method="get" action="update_student.php">
+                                        <input type="hidden" name="id" value="'.$row['id'].'">
+                                        <input type="submit" value="edit">
+                                    </form>
+                                </td>                                
                                 </tr>';
                         }
                     }else{
