@@ -18,10 +18,7 @@
     <div>
         <ul>
             <li><a href="../../../index.php">Home</a></li>
-            <li><a href="student_list.php">Students list</a></li>
-            <li><a href="add_student.php">Add students</a></li>
-            <li><a href="remove_student.php">Update Students Info</a></li>
-            <li><a href="update_student.php">Remove Students</a></li>
+            <li><a href="students.php">Students list</a></li>
         </ul>
     </div>
 </body>
