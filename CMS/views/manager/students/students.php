@@ -13,8 +13,19 @@
 </head>
 <body>
     <div>
+        <span><a href="add_student.php">Add new</a></span>
+    </div>
+    <div>
         <table border>
-            <tr><th>s.no</th><th>student_id</th><th>Students name</th><th>gender</th><th>mobile</th><th>Department</th></tr>
+            <tr>
+                <th>s.no</th>
+                <th>student_id</th>
+                <th>Students name</th>
+                <th>gender</th>
+                <th>mobile</th>
+                <th>Department</th>
+                <th>Action</th>
+            </tr>
             <?php
                 # get department list from database.
                 $sql = "SELECT * FROM students";
