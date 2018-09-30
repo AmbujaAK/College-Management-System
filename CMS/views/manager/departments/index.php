@@ -19,7 +19,6 @@
         <ul>
             <li><a href="../../../index.php">Home</a></li>
             <li><a href="departments.php">Department list</a></li>
-            <li><a href="remove_dept.php">Remove departments</a></li>
         </ul>
     </div>
 </body>
