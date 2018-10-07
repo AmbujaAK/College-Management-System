@@ -1,5 +1,6 @@
 # VS code
 .vscode
+_vendors/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
