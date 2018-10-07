@@ -6,21 +6,22 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" href="../assets/images/favicon.ico" type="image/ico" />
+	<link rel="icon" href="../../assets/images/favicon.ico" type="image/ico" />
 
     <title>CMS! | </title>
 
     <!-- Bootstrap -->
-    <link href="../assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../assets/vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="../assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="../../assets/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <!-- Custom Theme Style -->
-    <link href="../assets/build/css/custom.min.css" rel="stylesheet">
+    <link href="../../assets/build/css/custom.min.css" rel="stylesheet">
   </head>
 
   <body class="nav-md">
     <div class="container body">
       <div class="main_container">
+        <!-- left menu -->
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
@@ -32,7 +33,7 @@
             <!-- menu profile quick info -->
             <div class="profile clearfix">
               <div class="profile_pic">
-                <img src="../assets/images/ambuja.jpg" alt="..." class="img-circle profile_img">
+                <img src="../../assets/images/ambuja.jpg" alt="..." class="img-circle profile_img">
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
@@ -42,46 +43,48 @@
             <!-- /menu profile quick info -->
 
             <br />
+            <!-- Sidebar Menu -->
+            <?php
+                $urltmp =  explode('/', $_SERVER['REQUEST_URI']);
+                $titleTemp = $urltmp[count($urltmp)-1];
+                $subUrl = explode('?', $titleTemp);
+                $subUrl = explode('.', $subUrl[0]);
+                $subUrl = explode('_', $subUrl[0]);
+                $nowTitle = $subUrl[0];
+                $mainTitle = 'GENERAL';
+                $header_info = array('Home'=>array('Dashboard'=>array('url'=>'../dashboard/index.php')),
+                                     'Academic'=>array('Courses'=>array('url'=>'../manager/courses.php'),
+                                                    'Departments'=>array('url'=>'../manager/departments.php'),
+                                                    'Training'=>array('url'=>'../manager/training.php')),
+                                      'Students'=>array('Students record'=>array('url'=>'../manager/students.php')),
+                                      'Faculty'=>array('Faculty record'=>array('url'=>'../manager/faculty.php')),                
+                                      'Examination'=>array('Question Bank'=>array('url'=>'../manager/quesbank.php'),
+                                                    'Examination Form'=>array('url'=>'../manager/exam.php'),
+                                                    'Results'=>array('url'=>'../manager/results.php')),
+                                      'Projects'=>array('Projects'=>array('url'=>'../manager/projects.php'),
+                                                        'List of projects'=>array('url'=>'../manager/project_list.php')));
+            ?>
 
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="index1.php">Dashboard</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-edit"></i> Academics <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="form.html">Courses</a></li>
-                      <li><a href="form_advanced.html">Departments</a></li>
-                      <li><a href="form_advanced.html">Training</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-user"></i> Students <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="manager/students/">Students record</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-user"></i> Faculty <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="tables.html">Faculty records</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-bar-chart-o"></i> Examination <span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="chartjs.html">Question Bank</a></li>
-                      <li><a href="chartjs2.html">Examination form</a></li>
-                      <li><a href="form_advanced.html">Results</a></li>
-                    </ul>
-                  </li>
-                  <li><a><i class="fa fa-clone"></i>Projects<span class="fa fa-chevron-down"></span></a>
-                    <ul class="nav child_menu">
-                      <li><a href="fixed_sidebar.html">List of projects</a></li>
-                      <li><a href="fixed_footer.html">Faculty</a></li>
-                    </ul>
+                  <?php foreach ($header_info as $mainKey => $headerMain) {?>
+                  <li><a><i class="fa fa-home"></i><?php echo $mainKey; ?><span class="fa fa-chevron-down"></span></a>
+                    <!--<ul class="nav child_menu">-->
+                      <?php
+                        echo '<ul class="nav child_menu">';
+                        foreach($headerMain as $subKey=>$headerSub){
+                        if(strtolower($subKey) == strtolower($nowTitle)){
+                          $nowTitle = $subKey;
+                          $mainTitle = $mainKey;
+                          echo '<li class="active"><a href="'.$headerSub['url'].'">'.$subKey.'</a></li>';
+                        }else{
+                          echo '<li><a href="'.$headerSub['url'].'">'.$subKey.'</a></li>';
+                        }
+                      }?>
+                      <?php echo '</ul>'; }?>
                   </li>
                 </ul>
               </div>
@@ -101,7 +104,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <img src="../assets/images/ambuja.jpg" alt="">Ambuj
+                    <img src="../../assets/images/ambuja.jpg" alt="">Ambuj
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
