@@ -1,3 +1,3 @@
 <?php
-    header("location:views/index1.php");
+    header("location:views/dashboard/index.php");
 ?>
