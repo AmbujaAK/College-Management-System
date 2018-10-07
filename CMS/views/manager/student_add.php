@@ -4,6 +4,7 @@
 
 	$student_id = $first_name = $last_name = $pass = "";
 	$gender = $email = $mobile = $rollno = $dept = "";
+	$alert = 'something errors';
 
 	if(isset($_POST['stud_id']) && isset($_POST['fname']) &&
 	isset($_POST['lname']) && isset($_POST['pass']) &&
@@ -28,16 +29,22 @@
 
 				$exec_query = mysqli_query($conn,$sql);
 				if($exec_query){
-						echo "<span style='color:green'>Data added to Department table</span>";
+						$alert = 'Data added to Department table';
 				}else{
-						echo "<span style='color:red'>Data not added , Wrong Query</span>";
+					$alert = 'Data not added , Wrong Query';
 				}
 		}else{
-				echo "<span style='color:red'>Forms not filled</span>";
+				$alert = 'Forms not filled';
 		}
 	}
 ?>
 <div class="right_col" role="main">
+	<!-- alerts on error -->
+	<div class="alert alert-danger alert-dismissible fade in">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    	<strong>Error!</strong> <?php echo $alert; ?>
+  	</div>
+
 	<div class="box-header" style="height:65px">
 		<h3 class="box-title"></h3>
 
@@ -89,6 +96,9 @@
 		</form>
   </div>
 </div>
+<script>
+	//$('.alert').alert();
+</script>
 <?php
   include '../main/footer.php'
 ?>
